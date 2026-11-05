@@ -15,7 +15,7 @@ from PIL import Image as PILImage
 # ---------------- CONFIG ----------------
 ROLL = "48"
 NAME = "Shubham"
-HF_URL = "https://huggingface.co/spaces/phadshubham/text-to-music-explorer"
+HF_URL = "https://huggingface.co/spaces/Spacecraft21/text-to-music-explorer"
 GH_URL = "https://github.com/phadshubham/text-to-music-explorer"
 OUT = f"{ROLL}_{NAME}_P48.pdf"
 HERE = os.path.dirname(os.path.abspath(__file__))

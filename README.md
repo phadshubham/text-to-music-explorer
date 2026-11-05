@@ -3,12 +3,9 @@ title: P48 · Text-to-Music Explorer
 emoji: 🎵
 colorFrom: blue
 colorTo: indigo
-sdk: gradio
-sdk_version: 6.31.0
-app_file: app.py
+sdk: static
 pinned: false
 license: cc-by-nc-4.0
-python_version: 3.13
 ---
 
 # 🎵 P48 · Text-to-Music Explorer (MusicGen & CLAP)

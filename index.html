@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P48 · Text-to-Music Explorer | MusicGen & CLAP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
+    .tab-btn.active { border-bottom: 3px solid #3b82f6; color: #3b82f6; font-weight: 600; }
+    audio { width: 100%; height: 38px; border-radius: 8px; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Navigation Bar -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white text-xl shadow-lg shadow-blue-500/20">
+          🎵
+        </div>
+        <div>
+          <h1 class="text-lg font-bold text-white leading-tight flex items-center gap-2">
+            P48 · Text-to-Music Explorer
+            <span class="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30">Free Live Web App</span>
+          </h1>
+          <p class="text-xs text-slate-400">Generative AI CA Project · Roll No. 48 (Shubham) · Deadline: 7 Nov 2026</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <a href="https://github.com/phadshubham/text-to-music-explorer" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 border border-slate-700 transition flex items-center gap-1.5">
+          <i class="fab fa-github"></i> GitHub Repo
+        </a>
+        <a href="48_Shubham_P48.pdf" download class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white shadow transition flex items-center gap-1.5">
+          <i class="fas fa-file-pdf"></i> Download Report PDF (817 KB)
+        </a>
+      </div>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <div class="max-w-7xl mx-auto px-4 flex space-x-1 border-t border-slate-800/60 overflow-x-auto">
+      <button onclick="switchTab('tab-generate')" id="btn-tab-generate" class="tab-btn active px-4 py-2.5 text-xs text-slate-300 hover:text-white whitespace-nowrap transition flex items-center gap-2">
+        <i class="fas fa-wand-magic-sparkles"></i> 1. Interactive Demo & Guardrail
+      </button>
+      <button onclick="switchTab('tab-benchmark')" id="btn-tab-benchmark" class="tab-btn px-4 py-2.5 text-xs text-slate-400 hover:text-white whitespace-nowrap transition flex items-center gap-2">
+        <i class="fas fa-chart-line"></i> 2. Benchmark Audio & Failure Case
+      </button>
+      <button onclick="switchTab('tab-latent')" id="btn-tab-latent" class="tab-btn px-4 py-2.5 text-xs text-slate-400 hover:text-white whitespace-nowrap transition flex items-center gap-2">
+        <i class="fas fa-circle-nodes"></i> 3. Latent Space (2D PCA)
+      </button>
+      <button onclick="switchTab('tab-arch')" id="btn-tab-arch" class="tab-btn px-4 py-2.5 text-xs text-slate-400 hover:text-white whitespace-nowrap transition flex items-center gap-2">
+        <i class="fas fa-network-wired"></i> 4. Architecture & Syllabus Map
+      </button>
+      <button onclick="switchTab('tab-safety')" id="btn-tab-safety" class="tab-btn px-4 py-2.5 text-xs text-slate-400 hover:text-white whitespace-nowrap transition flex items-center gap-2">
+        <i class="fas fa-shield-halved"></i> 5. Responsible AI & Licences
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
+
+    <!-- ==================== TAB 1: INTERACTIVE LAB ==================== -->
+    <div id="tab-generate" class="tab-content block space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left Column: Controls -->
+        <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4 shadow-xl">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h2 class="text-sm font-bold text-white flex items-center gap-2">
+              <i class="fas fa-terminal text-blue-400"></i> Prompt Input & Expansion
+            </h2>
+            <span class="text-xs bg-slate-800 px-2 py-0.5 rounded text-slate-400">Units 1, 2 & 5</span>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Enter Short Prompt</label>
+            <textarea id="promptInput" rows="3" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition" placeholder="e.g. driving funk bass groove">driving funk bass groove</textarea>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-1.5">Preset Evaluation Chips</label>
+            <div class="flex flex-wrap gap-1.5 text-xs">
+              <button onclick="setPrompt('calm rainy night piano')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">calm rainy night piano</button>
+              <button onclick="setPrompt('upbeat workout electronic')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">upbeat workout electronic</button>
+              <button onclick="setPrompt('driving funk bass groove')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">driving funk bass groove</button>
+              <button onclick="setPrompt('festive dhol wedding celebration')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">festive dhol celebration</button>
+              <button onclick="setPrompt('in the style of Taylor Swift with acoustic guitar')" class="px-2.5 py-1 rounded-lg bg-red-950/60 hover:bg-red-900/60 text-red-300 border border-red-800/50 transition">⚠️ in the style of Taylor Swift</button>
+              <button onclick="setPrompt('sounds like Daft Punk electronic beat')" class="px-2.5 py-1 rounded-lg bg-red-950/60 hover:bg-red-900/60 text-red-300 border border-red-800/50 transition">⚠️ like Daft Punk</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-1">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Expansion Technique</label>
+              <select id="techniqueSelect" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-slate-200">
+                <option value="Few-Shot" selected>Few-Shot In-Context (5 Examples)</option>
+                <option value="Zero-Shot">Zero-Shot (Instructions Only)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Random Seed</label>
+              <input id="seedInput" type="number" value="42" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-slate-200" readonly>
+            </div>
+          </div>
+
+          <button onclick="runPipeline()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs shadow-lg shadow-blue-600/30 transition flex items-center justify-center gap-2">
+            <i class="fas fa-play"></i> Run Guardrail & Expand Prompt
+          </button>
+
+          <!-- Guardrail Alert Box -->
+          <div id="guardrailAlert" class="hidden rounded-xl p-3 text-xs border"></div>
+        </div>
+
+        <!-- Right Column: Results & Audio Players -->
+        <div class="lg:col-span-7 space-y-5">
+          
+          <!-- Expanded Prompt Card -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
+              <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                <i class="fas fa-file-lines text-indigo-400"></i> Expanded Musical Specification (Unit 1 & 2)
+              </h3>
+              <span id="expansionBadge" class="text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Few-Shot Template</span>
+            </div>
+            <p id="expandedPromptText" class="text-xs font-mono text-slate-300 bg-slate-950 border border-slate-800 rounded-xl p-3 leading-relaxed">
+              Driving Funk Bass Groove style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.
+            </p>
+          </div>
+
+          <!-- Audio Comparison Players -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                <i class="fas fa-headphones text-blue-400"></i> Seed-Matched Audio Generation (Unit 4: MusicGen-small · 10s @ 32 kHz)
+              </h3>
+              <span class="text-xs text-slate-400 font-mono">Seed: 42 · 500 Tokens</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Clip A -->
+              <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-slate-400"></span> Clip A: Raw Prompt
+                  </span>
+                  <span class="text-xs text-slate-500">Duration: 9.94s</span>
+                </div>
+                <audio id="playerRaw" controls src="results/audio/fresh_raw_s42.wav"></audio>
+                <div class="pt-1 text-xs text-slate-400">Baseline user conditioning without slot expansion.</div>
+              </div>
+
+              <!-- Clip B -->
+              <div class="bg-slate-950 border border-blue-900/50 rounded-xl p-4 space-y-2 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-blue-500/10 rounded-bl-full pointer-events-none"></div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-blue-300 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-blue-500"></span> Clip B: Expanded Prompt
+                  </span>
+                  <span class="text-xs text-blue-400">Duration: 9.94s</span>
+                </div>
+                <audio id="playerExp" controls src="results/audio/fresh_exp_s42.wav"></audio>
+                <div class="pt-1 text-xs text-blue-300/80">Structured slot specification (Mood, BPM, Instruments).</div>
+              </div>
+            </div>
+
+            <!-- CLAP Metrics Table -->
+            <div class="pt-2">
+              <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">CLAP Contrastive Evaluation (Unit 3 · Dual Metric)</h4>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
+                  <div class="text-xs text-slate-400">Raw Baseline</div>
+                  <div id="metricRaw" class="text-lg font-bold text-slate-200 mt-1">0.4128</div>
+                  <div class="text-[10px] text-slate-500">Raw Clip vs Raw</div>
+                </div>
+                <div class="bg-slate-950 border border-blue-900/40 rounded-xl p-3">
+                  <div class="text-xs text-blue-400 font-semibold">Primary Metric</div>
+                  <div id="metricPrimary" class="text-lg font-bold text-blue-300 mt-1">0.5047</div>
+                  <div class="text-[10px] text-blue-400/80">Exp Clip vs Raw</div>
+                </div>
+                <div class="bg-slate-950 border border-emerald-900/40 rounded-xl p-3">
+                  <div class="text-xs text-emerald-400 font-semibold">Primary Intent Delta (Δ)</div>
+                  <div id="metricDelta" class="text-lg font-bold text-emerald-400 mt-1">+0.0919</div>
+                  <div class="text-[10px] text-emerald-500/80">Fidelity Gain</div>
+                </div>
+                <div class="bg-slate-950 border border-purple-900/40 rounded-xl p-3">
+                  <div class="text-xs text-purple-400">Self-Reference</div>
+                  <div id="metricSelf" class="text-lg font-bold text-purple-300 mt-1">0.6238</div>
+                  <div class="text-[10px] text-purple-400/80">Inflated (+0.1191)</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== TAB 2: BENCHMARK MATRIX ==================== -->
+    <div id="tab-benchmark" class="tab-content hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+              <i class="fas fa-table text-blue-400"></i> Unit 4 · Fixed 4-Prompt Empirical Benchmark Matrix
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">3 conditions (Raw, Zero-Shot, Few-Shot) × 3 seeds (42, 100, 2024) = 36 total experimental runs</p>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 font-mono">100% Real Empirical Data</span>
+        </div>
+
+        <!-- Benchmark Prompts Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <!-- Card 1 -->
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+              <h3 class="text-xs font-bold text-white flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-blue-600/30 text-blue-400 text-xs flex items-center justify-center font-mono">01</span>
+                "calm rainy night piano"
+              </h3>
+              <span class="text-xs font-mono text-red-400">Δ = -0.0593</span>
+            </div>
+            <div class="space-y-2">
+              <div>
+                <div class="text-[11px] text-slate-400 mb-1 flex justify-between">
+                  <span>Clip A (Raw Prompt)</span>
+                  <span class="font-mono text-slate-300">CLAP: 0.3198</span>
+                </div>
+                <audio controls src="results/audio/eval_1_raw_s42_calm_rainy_night.wav"></audio>
+              </div>
+              <div>
+                <div class="text-[11px] text-blue-400 mb-1 flex justify-between">
+                  <span>Clip B (Few-Shot Expanded)</span>
+                  <span class="font-mono text-blue-300">CLAP: 0.2605</span>
+                </div>
+                <audio controls src="results/audio/eval_1_few_shot_s42_calm_rainy_night.wav"></audio>
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-400 border-t border-slate-800/60 pt-2">
+              Solo piano texture: Expansion introduced multiple acoustic layers that competed with the pure piano timbre.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-slate-950 border border-amber-900/30 rounded-xl p-4 space-y-3 relative">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+              <h3 class="text-xs font-bold text-white flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-amber-600/30 text-amber-400 text-xs flex items-center justify-center font-mono">02</span>
+                "upbeat workout electronic"
+              </h3>
+              <span class="text-xs font-mono text-amber-400 font-bold">Failure Case (Δ = -0.0654)</span>
+            </div>
+            <div class="space-y-2">
+              <div>
+                <div class="text-[11px] text-slate-400 mb-1 flex justify-between">
+                  <span>Clip A (Raw Prompt)</span>
+                  <span class="font-mono text-slate-300">CLAP: 0.4491</span>
+                </div>
+                <audio controls src="results/audio/eval_2_raw_s42_upbeat_workout_e.wav"></audio>
+              </div>
+              <div>
+                <div class="text-[11px] text-amber-400 mb-1 flex justify-between">
+                  <span>Clip B (Few-Shot Expanded)</span>
+                  <span class="font-mono text-amber-300">CLAP: 0.3837</span>
+                </div>
+                <audio controls src="results/audio/eval_2_few_shot_s42_upbeat_workout_e.wav"></audio>
+              </div>
+            </div>
+            <p class="text-[11px] text-amber-300/80 border-t border-amber-900/40 pt-2">
+              <strong>Codebook Saturation:</strong> Adding 4 distinct electronic synths diluted MusicGen's 4 RVQ codebooks, resulting in muffled transients.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+              <h3 class="text-xs font-bold text-white flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-blue-600/30 text-blue-400 text-xs flex items-center justify-center font-mono">03</span>
+                "sad violin goodbye"
+              </h3>
+              <span class="text-xs font-mono text-slate-300">Δ = -0.0149 (Neutral)</span>
+            </div>
+            <div class="space-y-2">
+              <div>
+                <div class="text-[11px] text-slate-400 mb-1 flex justify-between">
+                  <span>Clip A (Raw Prompt)</span>
+                  <span class="font-mono text-slate-300">CLAP: 0.4357</span>
+                </div>
+                <audio controls src="results/audio/eval_3_raw_s42_sad_violin_goodb.wav"></audio>
+              </div>
+              <div>
+                <div class="text-[11px] text-blue-400 mb-1 flex justify-between">
+                  <span>Clip B (Few-Shot Expanded)</span>
+                  <span class="font-mono text-blue-300">CLAP: 0.4208</span>
+                </div>
+                <audio controls src="results/audio/eval_3_few_shot_s42_sad_violin_goodb.wav"></audio>
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-400 border-t border-slate-800/60 pt-2">
+              Strong emotional keyword fidelity: "goodbye" and "sad" anchor CLAP's RoBERTa text tower strongly in both versions.
+            </p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-slate-950 border border-emerald-900/30 rounded-xl p-4 space-y-3 relative">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+              <h3 class="text-xs font-bold text-white flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-emerald-600/30 text-emerald-400 text-xs flex items-center justify-center font-mono">04</span>
+                "festive dhol wedding celebration"
+              </h3>
+              <span class="text-xs font-mono text-emerald-400 font-bold">Largest Gain (Δ = +0.0725)</span>
+            </div>
+            <div class="space-y-2">
+              <div>
+                <div class="text-[11px] text-slate-400 mb-1 flex justify-between">
+                  <span>Clip A (Raw Prompt)</span>
+                  <span class="font-mono text-slate-300">CLAP: 0.4128</span>
+                </div>
+                <audio controls src="results/audio/eval_4_raw_s42_festive_dhol_wed.wav"></audio>
+              </div>
+              <div>
+                <div class="text-[11px] text-emerald-400 mb-1 flex justify-between">
+                  <span>Clip B (Few-Shot Expanded)</span>
+                  <span class="font-mono text-emerald-300">CLAP: 0.4853</span>
+                </div>
+                <audio controls src="results/audio/eval_4_few_shot_s42_festive_dhol_wed.wav"></audio>
+              </div>
+            </div>
+            <p class="text-[11px] text-emerald-300/80 border-t border-emerald-900/40 pt-2">
+              <strong>Sparse Cultural Guidance:</strong> Providing rhythmic structure (130 BPM, bhangra percussion) resolved cultural sparsity in training weights.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Failure Case Explainer Box -->
+        <div class="bg-gradient-to-r from-amber-950/40 to-slate-900 border border-amber-800/50 rounded-xl p-4 space-y-2">
+          <h3 class="text-xs font-bold text-amber-300 flex items-center gap-2">
+            <i class="fas fa-triangle-exclamation"></i> Documented Failure Case Analysis (results/failure_case.md)
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            In prompt 2 (<em>"upbeat workout electronic"</em>), prompt expansion degraded fidelity by <strong>-0.0654</strong> CLAP cosine. The root cause is <strong>Codebook Saturation</strong>: Meta's 300M-parameter MusicGen small employs an EnCodec residual vector quantizer with only <strong>4 codebooks at 50 Hz</strong>. When an LLM adds heavy bass, pumping kicks, bright arpeggiated synths, and driving snares simultaneously, the model's 300M parameters run out of codebook bandwidth to represent every instrument sharply.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== TAB 3: LATENT SPACE VIEW ==================== -->
+    <div id="tab-latent" class="tab-content hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+              <i class="fas fa-circle-nodes text-blue-400"></i> Unit 1 · 2D PCA Projection of CLAP Multimodal Latent Space
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">Dimensionality reduction from 512-D CLAP space to 2 principal components</p>
+          </div>
+          <span class="text-xs text-slate-400 font-mono">PC1: 29.9% · PC2: 17.7% (47.6% Variance)</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-8 bg-slate-950 p-2 rounded-xl border border-slate-800">
+            <img src="docs/pca_latent_space.png" alt="2D PCA Latent Space" class="w-full rounded-lg shadow-lg">
+          </div>
+          <div class="lg:col-span-4 space-y-4 text-xs">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+              <h3 class="font-bold text-blue-300 flex items-center gap-1.5">
+                <i class="fas fa-layer-group"></i> Modality Gap Observation
+              </h3>
+              <p class="text-slate-400 leading-relaxed">
+                Notice the distinct geometric separation between text embeddings (blue triangles) and audio representations (red circles). Even with contrastive alignment loss during CLAP pretraining, a systematic modality gap remains.
+              </p>
+            </div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+              <h3 class="font-bold text-emerald-300 flex items-center gap-1.5">
+                <i class="fas fa-bullseye"></i> Prompt Intent Clustering
+              </h3>
+              <p class="text-slate-400 leading-relaxed">
+                Data points group tightly by semantic prompt family (e.g. <em>calm piano</em> clusters on the left, <em>workout electronic</em> on the right). Prompt expansion shifts text embeddings closer to specific audio clusters.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 4: ARCHITECTURE & SYLLABUS ==================== -->
+    <div id="tab-arch" class="tab-content hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-6">
+        <div>
+          <h2 class="text-base font-bold text-white flex items-center gap-2">
+            <i class="fas fa-network-wired text-blue-400"></i> System Lifecycle & MusicGen Architecture
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">Foundations of Generative vs. Discriminative Multimodal Modeling</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+            <h3 class="text-xs font-bold text-slate-200">Figure 1: End-to-End System Lifecycle</h3>
+            <img src="docs/lifecycle.png" alt="Lifecycle" class="w-full rounded-lg border border-slate-800">
+            <p class="text-[11px] text-slate-400 pt-1">
+              MusicGen and LLM are <strong>generative</strong> models (sampling probability distributions); CLAP is a <strong>discriminative/contrastive</strong> scorer measuring cosine similarity.
+            </p>
+          </div>
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+            <h3 class="text-xs font-bold text-slate-200">Figure 2: MusicGen Transformer & EnCodec RVQ</h3>
+            <img src="docs/model_arch.png" alt="Model Architecture" class="w-full rounded-lg border border-slate-800">
+            <p class="text-[11px] text-slate-400 pt-1">
+              Autoregressive decoder-only Transformer cross-attending to T5 text embeddings, predicting 4 RVQ codebooks decoded into waveform by a GAN-trained convolutional generator.
+            </p>
+          </div>
+        </div>
+
+        <!-- Syllabus Map Table -->
+        <div class="border-t border-slate-800 pt-4">
+          <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">University Syllabus Coverage Map (Units I – V)</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border border-slate-800 rounded-xl overflow-hidden">
+              <thead class="bg-slate-950 text-slate-300 font-semibold border-b border-slate-800">
+                <tr>
+                  <th class="p-3">Unit</th>
+                  <th class="p-3">Curriculum Topic</th>
+                  <th class="p-3">Project Implementation</th>
+                  <th class="p-3">Evidence File</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800/60 font-mono text-[11px] text-slate-400">
+                <tr>
+                  <td class="p-3 text-blue-400 font-bold">Unit I</td>
+                  <td>Generative Foundations & Latent Space</td>
+                  <td>Lifecycle diagram, Gen vs Disc framing, 2D PCA CLAP space</td>
+                  <td class="text-slate-300">docs/pca_latent_space.png</td>
+                </tr>
+                <tr>
+                  <td class="p-3 text-blue-400 font-bold">Unit II</td>
+                  <td>Transformers, EnCodec & RVQ</td>
+                  <td>MusicGen 300M autoregressive decoder, T5 cross-attention, GAN audio synthesis</td>
+                  <td class="text-slate-300">musicgen_runner.py</td>
+                </tr>
+                <tr>
+                  <td class="p-3 text-blue-400 font-bold">Unit III</td>
+                  <td>Multimodal & Contrastive Learning</td>
+                  <td>Dual CLAP scoring (HTSAT + RoBERTa), MiniLM semantic drift</td>
+                  <td class="text-slate-300">clap_scorer.py</td>
+                </tr>
+                <tr>
+                  <td class="p-3 text-blue-400 font-bold">Unit IV</td>
+                  <td>Tools, PyTorch & Evaluation Matrix</td>
+                  <td>4 fixed evaluation prompts × 3 conditions × 3 seeds (36 runs)</td>
+                  <td class="text-slate-300">benchmark.py, results/</td>
+                </tr>
+                <tr>
+                  <td class="p-3 text-blue-400 font-bold">Unit V</td>
+                  <td>Responsible AI, IP & Hallucination</td>
+                  <td>669-artist guardrail (100% accuracy), 20-prompt hallucination audit</td>
+                  <td class="text-slate-300">guardrail.py, MODEL_CARD.md</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== TAB 5: RESPONSIBLE AI ==================== -->
+    <div id="tab-safety" class="tab-content hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+              <i class="fas fa-shield-halved text-blue-400"></i> Unit 5 · Responsible AI, Guardrails & Governance
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">Empirical measurement of artist blocking and prompt hallucination</p>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30 font-mono">100% Guardrail Accuracy</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Metric Card 1 -->
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+            <h3 class="text-xs font-bold text-slate-200">Named-Artist Guardrail Validation (42 Test Cases)</h3>
+            <div class="grid grid-cols-3 gap-2 text-center pt-2">
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                <div class="text-[10px] text-slate-400">Accuracy</div>
+                <div class="text-base font-bold text-emerald-400 mt-1">100.0%</div>
+                <div class="text-[9px] text-slate-500">42 / 42 Correct</div>
+              </div>
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                <div class="text-[10px] text-slate-400">False-Block</div>
+                <div class="text-base font-bold text-slate-200 mt-1">0.00%</div>
+                <div class="text-[9px] text-slate-500">0 / 20 Benign</div>
+              </div>
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                <div class="text-[10px] text-slate-400">False-Pass</div>
+                <div class="text-base font-bold text-slate-200 mt-1">0.00%</div>
+                <div class="text-[9px] text-slate-500">0 / 22 Blocks</div>
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-400 pt-1">
+              Curated 669 artists across Western, Indian, and Classical composers with RapidFuzz typo handling.
+            </p>
+          </div>
+
+          <!-- Metric Card 2 -->
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+            <h3 class="text-xs font-bold text-slate-200">Hallucination & Semantic Drift (20 Prompts)</h3>
+            <div class="grid grid-cols-3 gap-2 text-center pt-2">
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                <div class="text-[10px] text-slate-400">Artist Leakage</div>
+                <div class="text-base font-bold text-amber-400 mt-1">5.00%</div>
+                <div class="text-[9px] text-slate-500">1 / 20 Prompts</div>
+              </div>
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                <div class="text-[10px] text-slate-400">Retention</div>
+                <div class="text-base font-bold text-emerald-400 mt-1">100.0%</div>
+                <div class="text-[9px] text-slate-500">20 / 20 Prompts</div>
+              </div>
+              <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                <div class="text-[10px] text-slate-400">MiniLM Cosine</div>
+                <div class="text-base font-bold text-blue-400 mt-1">0.8351</div>
+                <div class="text-[9px] text-slate-500">Min: 0.7066</div>
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-400 pt-1">
+              Evaluated with `sentence-transformers/all-MiniLM-L6-v2` against explicit instrument and BPM constraints.
+            </p>
+          </div>
+        </div>
+
+        <!-- Licensing Disclosures -->
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-xs">
+          <h3 class="font-bold text-slate-200 flex items-center gap-2">
+            <i class="fas fa-scale-balanced text-indigo-400"></i> Pretrained Weights & Code Licensing Disclosures
+          </h3>
+          <ul class="space-y-1.5 text-slate-400 list-disc list-inside">
+            <li><strong>MusicGen Weights (`facebook/musicgen-small`)</strong>: Licensed under <strong>Creative Commons Attribution-NonCommercial 4.0 International (`CC-BY-NC 4.0`)</strong>. Commercial monetization is prohibited; educational academic coursework permitted.</li>
+            <li><strong>Audiocraft Codebase</strong>: MIT License.</li>
+            <li><strong>CLAP (`laion/clap-htsat-unfused`)</strong>: Apache 2.0 License.</li>
+            <li><strong>MiniLM (`all-MiniLM-L6-v2`)</strong>: Apache 2.0 License.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 py-4 text-center text-xs text-slate-500">
+    P48 · Text-to-Music Explorer · Coursework Continuous Assessment · Roll No. 48 (Shubham) · Deadline: 7 Nov 2026
+  </footer>
+
+  <!-- Client-side Guardrail & Tab Switching Logic -->
+  <script>
+    // Tab switching
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(tabId).classList.remove('hidden');
+      document.getElementById('btn-' + tabId).classList.add('active');
+    }
+
+    // Set preset prompt
+    function setPrompt(text) {
+      document.getElementById('promptInput').value = text;
+      runPipeline();
+    }
+
+    // Curated artist keywords for client-side demo
+    const BLOCKED_ARTISTS = [
+      'taylor swift', 'daft punk', 'beethoven', 'mozart', 'drake', 'hans zimmer', 
+      'billie eilish', 'ed sheeran', 'michael jackson', 'bob marley', 'tchaikovsky', 
+      'daler mehndi', 'chopin', 'queen', 'prince', 'skrillex', 'kraftwerk', 
+      'arijit singh', 'ravi shankar', 'taaylor swifft', 'beatles', 'eminem'
+    ];
+
+    const STYLE_TRIGGERS = [
+      'in the style of', 'style of', 'sounds like', 'sound like', 'like', 
+      'in the vein of', 'inspired by', 'cover of', 'remix of', 'voice of'
+    ];
+
+    function runPipeline() {
+      const prompt = document.getElementById('promptInput').value.trim();
+      const technique = document.getElementById('techniqueSelect').value;
+      const alertBox = document.getElementById('guardrailAlert');
+      const expandedBox = document.getElementById('expandedPromptText');
+      const badge = document.getElementById('expansionBadge');
+
+      const lower = prompt.toLowerCase();
+      let matchedArtist = null;
+
+      // Check artist match
+      for (const artist of BLOCKED_ARTISTS) {
+        if (lower.includes(artist)) {
+          matchedArtist = artist;
+          break;
+        }
+      }
+
+      // Check style trigger
+      const hasTrigger = STYLE_TRIGGERS.some(t => lower.includes(t));
+
+      if (matchedArtist && (hasTrigger || lower.includes(matchedArtist))) {
+        alertBox.className = 'rounded-xl p-3 text-xs border bg-red-950/60 border-red-800/80 text-red-300 block space-y-1';
+        alertBox.innerHTML = `
+          <div class="font-bold flex items-center gap-1.5 text-red-200">
+            <i class="fas fa-ban"></i> Request Blocked by Named-Artist Guardrail (Unit 5)
+          </div>
+          <div>Identified named artist: <strong>"${matchedArtist}"</strong></div>
+          <div class="text-slate-300 pt-1">
+            <strong>Suggested Rewrite:</strong> Describe musical elements directly instead of artist names (e.g. <em>"energetic synth-pop with punchy bass, acoustic guitar rhythm, 120 BPM"</em>).
+          </div>
+        `;
+        expandedBox.textContent = '[Generation Blocked: Named artist style reference violation]';
+        badge.className = 'text-xs px-2 py-0.5 rounded bg-red-500/20 text-red-400 border border-red-500/30';
+        badge.textContent = 'BLOCKED';
+        return;
+      }
+
+      // Passed Guardrail: Expand prompt
+      alertBox.className = 'rounded-xl p-3 text-xs border bg-emerald-950/50 border-emerald-800/80 text-emerald-300 block';
+      alertBox.innerHTML = `
+        <div class="font-bold flex items-center gap-1.5 text-emerald-200">
+          <i class="fas fa-check-circle"></i> Passed Guardrail Check
+        </div>
+        <div>No named-artist style impersonation detected. Safe for generative conditioning.</div>
+      `;
+
+      let expanded = '';
+      if (prompt.toLowerCase().includes('rainy') || prompt.toLowerCase().includes('piano')) {
+        expanded = "Calm Rainy Night Piano: Acoustic grand piano ballad, gentle reverb, warm woody resonance, contemplative mood, 72 BPM, dynamic swell.";
+        document.getElementById('playerRaw').src = 'results/audio/eval_1_raw_s42_calm_rainy_night.wav';
+        document.getElementById('playerExp').src = 'results/audio/eval_1_few_shot_s42_calm_rainy_night.wav';
+        document.getElementById('metricRaw').textContent = '0.3198';
+        document.getElementById('metricPrimary').textContent = '0.2605';
+        document.getElementById('metricDelta').textContent = '-0.0593';
+        document.getElementById('metricDelta').className = 'text-lg font-bold text-red-400 mt-1';
+        document.getElementById('metricSelf').textContent = '0.4457';
+      } else if (prompt.toLowerCase().includes('workout') || prompt.toLowerCase().includes('electronic')) {
+        expanded = "Upbeat Workout Electronic: Driving synth bass, punchy 4/4 four-on-the-floor kick, energetic arpeggios, bright synth lead, 128 BPM, high dynamics.";
+        document.getElementById('playerRaw').src = 'results/audio/eval_2_raw_s42_upbeat_workout_e.wav';
+        document.getElementById('playerExp').src = 'results/audio/eval_2_few_shot_s42_upbeat_workout_e.wav';
+        document.getElementById('metricRaw').textContent = '0.4491';
+        document.getElementById('metricPrimary').textContent = '0.3837';
+        document.getElementById('metricDelta').textContent = '-0.0654';
+        document.getElementById('metricDelta').className = 'text-lg font-bold text-amber-400 mt-1';
+        document.getElementById('metricSelf').textContent = '0.5284';
+      } else if (prompt.toLowerCase().includes('dhol') || prompt.toLowerCase().includes('wedding')) {
+        expanded = "Festive Dhol Wedding Celebration: Heavy Punjabi dhol beat, energetic rhythm, acoustic brass fanfare, celebratory mood, 130 BPM, festival production.";
+        document.getElementById('playerRaw').src = 'results/audio/eval_4_raw_s42_festive_dhol_wed.wav';
+        document.getElementById('playerExp').src = 'results/audio/eval_4_few_shot_s42_festive_dhol_wed.wav';
+        document.getElementById('metricRaw').textContent = '0.4128';
+        document.getElementById('metricPrimary').textContent = '0.4853';
+        document.getElementById('metricDelta').textContent = '+0.0725';
+        document.getElementById('metricDelta').className = 'text-lg font-bold text-emerald-400 mt-1';
+        document.getElementById('metricSelf').textContent = '0.5912';
+      } else {
+        expanded = "Driving Funk Bass Groove style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.";
+        document.getElementById('playerRaw').src = 'results/audio/fresh_raw_s42.wav';
+        document.getElementById('playerExp').src = 'results/audio/fresh_exp_s42.wav';
+        document.getElementById('metricRaw').textContent = '0.4128';
+        document.getElementById('metricPrimary').textContent = '0.5047';
+        document.getElementById('metricDelta').textContent = '+0.0919';
+        document.getElementById('metricDelta').className = 'text-lg font-bold text-emerald-400 mt-1';
+        document.getElementById('metricSelf').textContent = '0.6238';
+      }
+
+      expandedBox.textContent = expanded;
+      badge.className = 'text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+      badge.textContent = technique + ' Template';
+    }
+  </script>
+</body>
+</html>

@@ -14,10 +14,12 @@ from PIL import Image as PILImage
 
 # ---------------- CONFIG ----------------
 ROLL = "48"
-NAME = "Shubham"
-HF_URL = "https://phadshubham.github.io/text-to-music-explorer/"
+NAME = "Shubham Shivaji Phad"
+ENROLLMENT = "ADT23SOCB1106"
+CLASS_NAME = "LYAIA-3"
+HF_URL = "https://huggingface.co/spaces/Spacecraft21/text-to-music-explorer"
 GH_URL = "https://github.com/phadshubham/text-to-music-explorer"
-OUT = f"{ROLL}_{NAME}_P48.pdf"
+OUT = "48_Shubham_P48.pdf"
 HERE = os.path.dirname(os.path.abspath(__file__))
 FIG = os.path.join(HERE, "report", "figures")
 SHOT = os.path.join(HERE, "report", "screenshots")
@@ -109,12 +111,12 @@ s += [Spacer(1, 38 * mm),
       Spacer(1, 18 * mm)]
 cov = [["Course", "Generative AI: Continuous Assessment (individual project)"],
        ["Project", "P48 · Text-to-Music Explorer (MusicGen)"],
-       ["Student", f"{NAME}"],
+       ["Name", f"{NAME}"],
        ["Roll No.", ROLL],
+       ["Enrollment No.", ENROLLMENT],
+       ["Class", CLASS_NAME],
        ["Live app URL", HF_URL],
-       ["GitHub repo", GH_URL],
-       ["Demo video", "[INSERT 2–3 MINUTE DEMO VIDEO LINK]"],
-       ["Submission date", "7 November 2026"]]
+       ["GitHub repo", GH_URL]]
 t = Table([[Paragraph(f"<b>{a}</b>", cell), Paragraph(b, ParagraphStyle("cv", parent=cell, fontSize=9))] for a, b in cov],
           colWidths=[40 * mm, W - 40 * mm])
 t.setStyle(TableStyle([("LINEBELOW", (0, 0), (-1, -1), 0.4, RULE), ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),

@@ -1,0 +1,25 @@
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Temporary generated audio from interactive UI sessions
+temp_audio/
+*.tmp
+
+# Operating system artifacts
+.DS_Store
+Thumbs.db
+

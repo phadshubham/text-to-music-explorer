@@ -1,0 +1,281 @@
+{
+  "explained_variance": [
+    0.29911866380560453,
+    0.1765350068129426
+  ],
+  "n_samples": 34,
+  "points": [
+    {
+      "x": -0.4918,
+      "y": -0.3594,
+      "type": "text",
+      "condition": "zero_shot",
+      "prompt_id": "eval_1",
+      "label": "eval_1_zero_shot_txt (calm rainy)"
+    },
+    {
+      "x": -0.2974,
+      "y": 0.4985,
+      "type": "audio",
+      "condition": "zero_shot",
+      "prompt_id": "eval_1",
+      "label": "eval_1_zero_shot_s42 (calm rainy)"
+    },
+    {
+      "x": -0.4918,
+      "y": -0.3594,
+      "type": "text",
+      "condition": "few_shot",
+      "prompt_id": "eval_1",
+      "label": "eval_1_few_shot_txt (calm rainy)"
+    },
+    {
+      "x": -0.3005,
+      "y": 0.4985,
+      "type": "audio",
+      "condition": "few_shot",
+      "prompt_id": "eval_1",
+      "label": "eval_1_few_shot_s42 (calm rainy)"
+    },
+    {
+      "x": -0.1619,
+      "y": -0.4055,
+      "type": "text",
+      "condition": "raw",
+      "prompt_id": "eval_1",
+      "label": "eval_1_raw_txt (calm rainy)"
+    },
+    {
+      "x": -0.1888,
+      "y": 0.3262,
+      "type": "audio",
+      "condition": "raw",
+      "prompt_id": "eval_1",
+      "label": "eval_1_raw_s100 (calm rainy)"
+    },
+    {
+      "x": -0.4918,
+      "y": -0.3594,
+      "type": "text",
+      "condition": "zero_shot",
+      "prompt_id": "eval_1",
+      "label": "eval_1_zero_shot_txt (calm rainy)"
+    },
+    {
+      "x": -0.371,
+      "y": 0.4262,
+      "type": "audio",
+      "condition": "zero_shot",
+      "prompt_id": "eval_1",
+      "label": "eval_1_zero_shot_s100 (calm rainy)"
+    },
+    {
+      "x": -0.4918,
+      "y": -0.3594,
+      "type": "text",
+      "condition": "few_shot",
+      "prompt_id": "eval_1",
+      "label": "eval_1_few_shot_txt (calm rainy)"
+    },
+    {
+      "x": -0.371,
+      "y": 0.4262,
+      "type": "audio",
+      "condition": "few_shot",
+      "prompt_id": "eval_1",
+      "label": "eval_1_few_shot_s100 (calm rainy)"
+    },
+    {
+      "x": -0.1619,
+      "y": -0.4055,
+      "type": "text",
+      "condition": "raw",
+      "prompt_id": "eval_1",
+      "label": "eval_1_raw_txt (calm rainy)"
+    },
+    {
+      "x": -0.3658,
+      "y": 0.3585,
+      "type": "audio",
+      "condition": "raw",
+      "prompt_id": "eval_1",
+      "label": "eval_1_raw_s2024 (calm rainy)"
+    },
+    {
+      "x": -0.4918,
+      "y": -0.3594,
+      "type": "text",
+      "condition": "zero_shot",
+      "prompt_id": "eval_1",
+      "label": "eval_1_zero_shot_txt (calm rainy)"
+    },
+    {
+      "x": -0.3636,
+      "y": 0.4357,
+      "type": "audio",
+      "condition": "zero_shot",
+      "prompt_id": "eval_1",
+      "label": "eval_1_zero_shot_s2024 (calm rainy)"
+    },
+    {
+      "x": -0.4918,
+      "y": -0.3594,
+      "type": "text",
+      "condition": "few_shot",
+      "prompt_id": "eval_1",
+      "label": "eval_1_few_shot_txt (calm rainy)"
+    },
+    {
+      "x": -0.3636,
+      "y": 0.4357,
+      "type": "audio",
+      "condition": "few_shot",
+      "prompt_id": "eval_1",
+      "label": "eval_1_few_shot_s2024 (calm rainy)"
+    },
+    {
+      "x": 0.4406,
+      "y": -0.4184,
+      "type": "text",
+      "condition": "raw",
+      "prompt_id": "eval_2",
+      "label": "eval_2_raw_txt (upbeat wor)"
+    },
+    {
+      "x": 0.6673,
+      "y": 0.2204,
+      "type": "audio",
+      "condition": "raw",
+      "prompt_id": "eval_2",
+      "label": "eval_2_raw_s42 (upbeat wor)"
+    },
+    {
+      "x": 0.757,
+      "y": -0.2215,
+      "type": "text",
+      "condition": "zero_shot",
+      "prompt_id": "eval_2",
+      "label": "eval_2_zero_shot_txt (upbeat wor)"
+    },
+    {
+      "x": 0.7323,
+      "y": 0.2779,
+      "type": "audio",
+      "condition": "zero_shot",
+      "prompt_id": "eval_2",
+      "label": "eval_2_zero_shot_s42 (upbeat wor)"
+    },
+    {
+      "x": 0.757,
+      "y": -0.2215,
+      "type": "text",
+      "condition": "few_shot",
+      "prompt_id": "eval_2",
+      "label": "eval_2_few_shot_txt (upbeat wor)"
+    },
+    {
+      "x": 0.7323,
+      "y": 0.2779,
+      "type": "audio",
+      "condition": "few_shot",
+      "prompt_id": "eval_2",
+      "label": "eval_2_few_shot_s42 (upbeat wor)"
+    },
+    {
+      "x": -0.0656,
+      "y": -0.3085,
+      "type": "text",
+      "condition": "raw",
+      "prompt_id": "eval_3",
+      "label": "eval_3_raw_txt (sad violin)"
+    },
+    {
+      "x": -0.2339,
+      "y": 0.2388,
+      "type": "audio",
+      "condition": "raw",
+      "prompt_id": "eval_3",
+      "label": "eval_3_raw_s42 (sad violin)"
+    },
+    {
+      "x": -0.0543,
+      "y": -0.3599,
+      "type": "text",
+      "condition": "zero_shot",
+      "prompt_id": "eval_3",
+      "label": "eval_3_zero_shot_txt (sad violin)"
+    },
+    {
+      "x": -0.2229,
+      "y": 0.2019,
+      "type": "audio",
+      "condition": "zero_shot",
+      "prompt_id": "eval_3",
+      "label": "eval_3_zero_shot_s42 (sad violin)"
+    },
+    {
+      "x": -0.0543,
+      "y": -0.3599,
+      "type": "text",
+      "condition": "few_shot",
+      "prompt_id": "eval_3",
+      "label": "eval_3_few_shot_txt (sad violin)"
+    },
+    {
+      "x": -0.2229,
+      "y": 0.2019,
+      "type": "audio",
+      "condition": "few_shot",
+      "prompt_id": "eval_3",
+      "label": "eval_3_few_shot_s42 (sad violin)"
+    },
+    {
+      "x": 0.3375,
+      "y": -0.3284,
+      "type": "text",
+      "condition": "raw",
+      "prompt_id": "eval_4",
+      "label": "eval_4_raw_txt (festive dh)"
+    },
+    {
+      "x": 0.2744,
+      "y": 0.2458,
+      "type": "audio",
+      "condition": "raw",
+      "prompt_id": "eval_4",
+      "label": "eval_4_raw_s42 (festive dh)"
+    },
+    {
+      "x": 0.5467,
+      "y": -0.2009,
+      "type": "text",
+      "condition": "zero_shot",
+      "prompt_id": "eval_4",
+      "label": "eval_4_zero_shot_txt (festive dh)"
+    },
+    {
+      "x": 0.4789,
+      "y": 0.2584,
+      "type": "audio",
+      "condition": "zero_shot",
+      "prompt_id": "eval_4",
+      "label": "eval_4_zero_shot_s42 (festive dh)"
+    },
+    {
+      "x": 0.5467,
+      "y": -0.2009,
+      "type": "text",
+      "condition": "few_shot",
+      "prompt_id": "eval_4",
+      "label": "eval_4_few_shot_txt (festive dh)"
+    },
+    {
+      "x": 0.4789,
+      "y": 0.2584,
+      "type": "audio",
+      "condition": "few_shot",
+      "prompt_id": "eval_4",
+      "label": "eval_4_few_shot_s42 (festive dh)"
+    }
+  ]
+}

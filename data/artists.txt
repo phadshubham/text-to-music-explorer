@@ -1,0 +1,440 @@
+# Curated Database of 300+ Prominent Artists, Bands, and Composers
+# Categories: Global Pop/Rock/Hip-Hop/Electronic, Indian Popular/Folk/Classical, Western Classical Composers
+
+# Global Pop & Contemporary
+Taylor Swift
+Drake
+Beyonce
+Ed Sheeran
+Bob Marley
+Prince
+Adele
+Eminem
+Rihanna
+Justin Bieber
+Ariana Grande
+Bruno Mars
+Billie Eilish
+Katy Perry
+Lady Gaga
+Shakira
+The Weeknd
+Post Malone
+Kendrick Lamar
+Kanye West
+Dua Lipa
+Harry Styles
+BTS
+Blackpink
+Justin Timberlake
+Britney Spears
+Madonna
+Michael Jackson
+Elton John
+Stevie Wonder
+Whitney Houston
+Celine Dion
+Mariah Carey
+George Michael
+Phil Collins
+Paul McCartney
+John Lennon
+David Bowie
+Freddie Mercury
+Bob Dylan
+Bruce Springsteen
+Bon Jovi
+Bryan Adams
+Rod Stewart
+Sting
+Billy Joel
+Lionel Richie
+Cher
+Tina Turner
+Fleetwood Mac
+ABBA
+Bee Gees
+The Beatles
+The Rolling Stones
+Led Zeppelin
+Pink Floyd
+AC/DC
+Queen
+The Who
+The Doors
+U2
+Nirvana
+Guns N Roses
+Metallica
+Aerosmith
+Red Hot Chili Peppers
+Green Day
+Linkin Park
+Coldplay
+Radiohead
+Maroon 5
+Imagine Dragons
+OneRepublic
+Foo Fighters
+The Police
+Pearl Jam
+R.E.M.
+Oasis
+Blur
+Arctic Monkeys
+The Strokes
+The Killers
+Muse
+Paramore
+Fall Out Boy
+Twenty One Pilots
+Gorillaz
+Cardi B
+Nicki Minaj
+Megan Thee Stallion
+Travis Scott
+J. Cole
+Snoop Dogg
+Dr. Dre
+Eminem
+Jay-Z
+Tupac Shakur
+Notorious B.I.G.
+Nas
+Lil Wayne
+50 Cent
+Future
+21 Savage
+Playboi Carti
+Lil Baby
+Juice WRLD
+XXXTentacion
+Mac Miller
+Tyler, The Creator
+Doja Cat
+Lizzo
+SZA
+Frank Ocean
+The Weeknd
+Childish Gambino
+Lana Del Rey
+Lorde
+Olivia Rodrigo
+Charli XCX
+Chappell Roan
+Sabrina Carpenter
+
+# Electronic, Dance & Ambient Producers
+Daft Punk
+Avicii
+Calvin Harris
+David Guetta
+Martin Garrix
+Tiësto
+Deadmau5
+Skrillex
+Marshmello
+Swedish House Mafia
+The Chainsmokers
+Kygo
+Zedd
+Alan Walker
+DJ Snake
+Major Lazer
+Fatboy Slim
+The Chemical Brothers
+The Prodigy
+Moby
+Underworld
+Justice
+Disclosure
+Flume
+Porter Robinson
+Madeon
+Illenium
+San Holo
+Odesza
+Rufus Du Sol
+Kaskade
+Armin van Buuren
+Above and Beyond
+Paul van Dyk
+Steve Aoki
+Afrojack
+Hardwell
+Alesso
+Eric Prydz
+Carl Cox
+Fisher
+Peggy Gou
+Fred Again
+Four Tet
+Bonobo
+Tycho
+Jon Hopkins
+Burial
+Aphex Twin
+Boards of Canada
+Autechre
+Squarepusher
+Brian Eno
+Kraftwerk
+Jean-Michel Jarre
+Vangelis
+Tangerine Dream
+Kitaro
+Yanni
+Enya
+Mike Oldfield
+
+# Film & Modern Classical Composers
+Hans Zimmer
+John Williams
+Ennio Morricone
+Ludovico Einaudi
+Max Richter
+Philip Glass
+Yiruma
+Yann Tiersen
+Joe Hisaishi
+Howard Shore
+Danny Elfman
+Thomas Newman
+Alexandre Desplat
+James Horner
+Alan Silvestri
+Ramin Djawadi
+Michael Giacchino
+Bernard Herrmann
+Nils Frahm
+Olafur Arnalds
+Dustin O'Halloran
+Jóhann Jóhannsson
+Hildur Guðnadóttir
+Ryuichi Sakamoto
+
+# Classical Composers
+Johann Sebastian Bach
+Wolfgang Amadeus Mozart
+Ludwig van Beethoven
+Pyotr Ilyich Tchaikovsky
+Frederic Chopin
+Johannes Brahms
+Antonio Vivaldi
+Franz Schubert
+George Frideric Handel
+Claude Debussy
+Franz Liszt
+Felix Mendelssohn
+Richard Wagner
+Giuseppe Verdi
+Sergei Rachmaninoff
+Maurice Ravel
+Igor Stravinsky
+Gustav Mahler
+Antonin Dvorak
+Johann Strauss
+Edvard Grieg
+Camille Saint-Saens
+Sergei Prokofiev
+Dmitri Shostakovich
+Giacomo Puccini
+Niccolo Paganini
+Robert Schumann
+Hector Berlioz
+Georges Bizet
+Modest Mussorgsky
+Gabriel Faure
+Jean Sibelius
+Bela Bartok
+Ralph Vaughan Williams
+Erik Satie
+Gustav Holst
+Arcangelo Corelli
+Claudio Monteverdi
+Henry Purcell
+Georg Philipp Telemann
+Domenico Scarlatti
+Joseph Haydn
+Christoph Willibald Gluck
+Luigi Boccherini
+Muzio Clementi
+Carl Philipp Emanuel Bach
+Gioachino Rossini
+Gaetano Donizetti
+Vincenzo Bellini
+Alexander Borodin
+Nikolai Rimsky-Korsakov
+Mily Balakirev
+Cesar Cui
+Anton Bruckner
+Richard Strauss
+Alexander Scriabin
+Arnold Schoenberg
+Alban Berg
+Anton Webern
+Paul Hindemith
+Francis Poulenc
+Darius Milhaud
+Arthur Honegger
+Zoltan Kodaly
+Leos Janacek
+Manuel de Falla
+Joaquin Rodrigo
+Heitor Villa-Lobos
+George Gershwin
+Aaron Copland
+Samuel Barber
+Leonard Bernstein
+John Cage
+Steve Reich
+Terry Riley
+Arvo Pärt
+Henryk Gorecki
+Krzysztof Penderecki
+Gyorgy Ligeti
+Toru Takemitsu
+Eric Whitacre
+John Rutter
+Karl Jenkins
+
+# Indian Composers & Music Directors
+A.R. Rahman
+Ilaiyaraaja
+R.D. Burman
+S.D. Burman
+Pritam
+Vishal-Shekhar
+Shankar-Ehsaan-Loy
+Amit Trivedi
+Sachin-Jigar
+Mithoon
+Himesh Reshammiya
+Anu Malik
+Jatin-Lalit
+Nadeem-Shravan
+Laxmikant-Pyarelal
+Madan Mohan
+O.P. Nayyar
+Naushad
+Khayyam
+Kalyanji-Anandji
+Salil Chowdhury
+Bappi Lahiri
+C. Ramchandra
+Roshan
+Hemant Kumar
+Jaidev
+Ravindra Jain
+Rajesh Roshan
+Anand-Milind
+Sanjeev-Darshan
+Sajid-Wajid
+Sneha Khanwalkar
+Santosh Narayanan
+Anirudh Ravichander
+Harris Jayaraj
+Yuvan Shankar Raja
+Devi Sri Prasad
+Thaman S
+M.M. Keeravani
+G.V. Prakash Kumar
+D. Imman
+Vidyasagar
+
+# Indian Singers & Vocalists
+Arijit Singh
+Shreya Ghoshal
+Sonu Nigam
+Sunidhi Chauhan
+Mohit Chauhan
+Neha Kakkar
+Badshah
+Yo Yo Honey Singh
+Diljit Dosanjh
+Sidhu Moose Wala
+Karan Aujla
+AP Dhillon
+Guru Randhawa
+Hardy Sandhu
+Mika Singh
+Daler Mehndi
+Sukhwinder Singh
+Udit Narayan
+Kumar Sanu
+Alka Yagnik
+Kavita Krishnamurthy
+Anuradha Paudwal
+Lata Mangeshkar
+Asha Bhosle
+Kishore Kumar
+Mohammed Rafi
+Mukesh
+Manna Dey
+Talat Mahmood
+K.J. Yesudas
+S.P. Balasubrahmanyam
+K.S. Chithra
+Sujatha
+Hariharan
+Shankar Mahadevan
+Lucky Ali
+KK
+Shaan
+Atif Aslam
+Rahat Fateh Ali Khan
+Nusrat Fateh Ali Khan
+Ghulam Ali
+Mehdi Hassan
+Jagjit Singh
+Pankaj Udhas
+Bhupen Hazarika
+Jubin Nautiyal
+Armaan Malik
+Darshan Raval
+Prateek Kuhad
+Jasleen Royal
+Anuv Jain
+King
+Divine
+Naezy
+Raftaar
+Emiway Bantai
+MC Stan
+Seedhe Maut
+KR$NA
+Sid Sriram
+
+# Indian Classical & Instrumental Legends
+Ravi Shankar
+Anoushka Shankar
+Vilayat Khan
+Ali Akbar Khan
+Amjad Ali Khan
+Hariprasad Chaurasia
+Zakir Hussain
+Alla Rakha
+Shivkumar Sharma
+Bismillah Khan
+L. Subramaniam
+M.S. Subbulakshmi
+Balamuralikrishna
+Bhimsen Joshi
+Pandit Jasraj
+Kishori Amonkar
+Girija Devi
+Kumar Gandharva
+Mallikarjun Mansur
+Gangubai Hangal
+Vishwa Mohan Bhatt
+Ronu Majumdar
+N. Rajam
+T.N. Krishnan
+Lalgudi Jayaraman
+U. Srinivas
+Kadri Gopalnath
+Vikku Vinayakram
+Sivamani
+Trichy Sankaran
+Palghat Raghu
+Karaikudi Mani

@@ -1,0 +1,336 @@
+{
+  "metadata": {
+    "num_test_prompts": 20,
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "expansion_technique": "Few-Shot In-Context Learning"
+  },
+  "metrics": {
+    "artist_name_leakage_rate_pct": 5.0,
+    "constraint_retention_rate_pct": 100.0,
+    "mean_minilm_cosine_similarity": 0.8351,
+    "min_minilm_cosine_similarity": 0.7066,
+    "max_minilm_cosine_similarity": 0.9266
+  },
+  "records": [
+    {
+      "id": "h_01",
+      "raw_prompt": "calm solo harp at 70 BPM",
+      "expanded_prompt": "Calm Solo Harp At 70 Bpm style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "harp",
+        "70",
+        "calm"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8727
+    },
+    {
+      "id": "h_02",
+      "raw_prompt": "energetic funk slap bass 115 BPM",
+      "expanded_prompt": "Energetic Funk Slap Bass 115 Bpm style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "funk",
+        "bass",
+        "115"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8399
+    },
+    {
+      "id": "h_03",
+      "raw_prompt": "melancholic acoustic cello ballad",
+      "expanded_prompt": "Melancholic Acoustic Cello Ballad style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "cello",
+        "acoustic",
+        "melancholic"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8417
+    },
+    {
+      "id": "h_04",
+      "raw_prompt": "fast 140 BPM synthwave arpeggio",
+      "expanded_prompt": "Fast 140 Bpm Synthwave Arpeggio style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "synthwave",
+        "140",
+        "synth"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.7845
+    },
+    {
+      "id": "h_05",
+      "raw_prompt": "gentle bamboo flute with wind chimes",
+      "expanded_prompt": "Gentle Bamboo Flute With Wind Chimes style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "flute",
+        "bamboo",
+        "wind chimes"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.9067
+    },
+    {
+      "id": "h_06",
+      "raw_prompt": "heavy distorted electric guitar riffs",
+      "expanded_prompt": "Heavy Distorted Electric Guitar Riffs: Warm acoustic fingerstyle guitar, gentle organic percussion, intimate atmospheric reverb, relaxing 80 BPM.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "guitar",
+        "distorted",
+        "electric"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.7941
+    },
+    {
+      "id": "h_07",
+      "raw_prompt": "slow 60 BPM ambient piano chords",
+      "expanded_prompt": "Slow 60 Bpm Ambient Piano Chords: Acoustic grand piano ballad, gentle reverb, warm woody resonance, contemplative mood, 72 BPM, dynamic swell.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "piano",
+        "60",
+        "ambient"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8265
+    },
+    {
+      "id": "h_08",
+      "raw_prompt": "traditional punjabi dhol dance rhythm",
+      "expanded_prompt": "Traditional Punjabi Dhol Dance Rhythm: Energetic traditional Punjabi dhol percussion, festive wedding celebration, syncopated rhythm, bright accents, 105 BPM.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "dhol",
+        "punjabi",
+        "rhythm"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.9266
+    },
+    {
+      "id": "h_09",
+      "raw_prompt": "bright ukulele island melody 95 BPM",
+      "expanded_prompt": "Bright Ukulele Island Melody 95 Bpm style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "ukulele",
+        "95",
+        "island"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8957
+    },
+    {
+      "id": "h_10",
+      "raw_prompt": "dark cinematic timpani and brass swells",
+      "expanded_prompt": "Dark Cinematic Timpani And Brass Swells style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "timpani",
+        "brass",
+        "cinematic"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8304
+    },
+    {
+      "id": "h_11",
+      "raw_prompt": "relaxing nylon string acoustic guitar",
+      "expanded_prompt": "Relaxing Nylon String Acoustic Guitar: Warm acoustic fingerstyle guitar, gentle organic percussion, intimate atmospheric reverb, relaxing 80 BPM.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "guitar",
+        "acoustic",
+        "relaxing"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": true,
+      "detected_artist": "Sting",
+      "minilm_cosine_similarity": 0.8428
+    },
+    {
+      "id": "h_12",
+      "raw_prompt": "driving 128 BPM electronic dance drop",
+      "expanded_prompt": "Driving 128 Bpm Electronic Dance Drop: Pulsating analog synthesizer with driving 4/4 electronic kick, crisp hi-hats, energetic workout rhythm, 128 BPM.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "128",
+        "electronic",
+        "dance"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8213
+    },
+    {
+      "id": "h_13",
+      "raw_prompt": "sad solo violin goodbye melody",
+      "expanded_prompt": "Sad Solo Violin Goodbye Melody: Expressive solo acoustic violin, melancholic vibrato, delicate room ambience, slow 60 BPM, emotional dynamic phrasing.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "violin",
+        "sad",
+        "melody"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8816
+    },
+    {
+      "id": "h_14",
+      "raw_prompt": "warm rhodes electric piano lofi groove",
+      "expanded_prompt": "Warm Rhodes Electric Piano Lofi Groove: Acoustic grand piano ballad, gentle reverb, warm woody resonance, contemplative mood, 72 BPM, dynamic swell.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "rhodes",
+        "piano",
+        "lofi"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8491
+    },
+    {
+      "id": "h_15",
+      "raw_prompt": "festive shehnai brass celebration",
+      "expanded_prompt": "Festive Shehnai Brass Celebration style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "shehnai",
+        "celebration",
+        "brass"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.7999
+    },
+    {
+      "id": "h_16",
+      "raw_prompt": "atmospheric synthesizer with tape echo",
+      "expanded_prompt": "Atmospheric Synthesizer With Tape Echo style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "synthesizer",
+        "tape",
+        "atmospheric"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8158
+    },
+    {
+      "id": "h_17",
+      "raw_prompt": "upbeat disco bassline and hi-hats",
+      "expanded_prompt": "Upbeat Disco Bassline And Hi-Hats style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "disco",
+        "bassline",
+        "upbeat"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8067
+    },
+    {
+      "id": "h_18",
+      "raw_prompt": "contemplative church pipe organ hymn",
+      "expanded_prompt": "Contemplative Church Pipe Organ Hymn style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "organ",
+        "church",
+        "pipe"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8205
+    },
+    {
+      "id": "h_19",
+      "raw_prompt": "punchy 80s drum machine pulse 110 BPM",
+      "expanded_prompt": "Punchy 80S Drum Machine Pulse 110 Bpm style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "drum",
+        "80s",
+        "110"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.8394
+    },
+    {
+      "id": "h_20",
+      "raw_prompt": "mystical middle eastern oud solo",
+      "expanded_prompt": "Mystical Middle Eastern Oud Solo style instrumental, rich acoustic textures, subtle percussion, steady rhythm, 95 BPM, dynamic production.",
+      "expansion_status": "FALLBACK (no LLM)",
+      "constraints_expected": [
+        "oud",
+        "mystical",
+        "middle eastern"
+      ],
+      "constraints_retained": true,
+      "missing_constraints": [],
+      "artist_leaked": false,
+      "detected_artist": null,
+      "minilm_cosine_similarity": 0.7066
+    }
+  ]
+}

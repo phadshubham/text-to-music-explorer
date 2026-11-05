@@ -1,0 +1,30 @@
+[
+  {
+    "id": "eval_1",
+    "prompt": "calm rainy night piano",
+    "category": "acoustic_ambient",
+    "expected_tempo_bpm": "60-80",
+    "primary_instruments": ["piano", "ambient rain texture"]
+  },
+  {
+    "id": "eval_2",
+    "prompt": "upbeat workout electronic",
+    "category": "electronic_dance",
+    "expected_tempo_bpm": "125-135",
+    "primary_instruments": ["synthesizer", "electronic drums", "bass"]
+  },
+  {
+    "id": "eval_3",
+    "prompt": "sad violin goodbye",
+    "category": "orchestral_classical",
+    "expected_tempo_bpm": "50-70",
+    "primary_instruments": ["violin", "strings"]
+  },
+  {
+    "id": "eval_4",
+    "prompt": "festive dhol wedding celebration",
+    "category": "indian_folk_celebration",
+    "expected_tempo_bpm": "100-115",
+    "primary_instruments": ["dhol", "punjabi percussion", "shehnai/brass"]
+  }
+]

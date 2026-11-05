@@ -1,0 +1,22 @@
+[
+  {"id": "h_01", "prompt": "calm solo harp at 70 BPM", "constraints": ["harp", "70", "calm"]},
+  {"id": "h_02", "prompt": "energetic funk slap bass 115 BPM", "constraints": ["funk", "bass", "115"]},
+  {"id": "h_03", "prompt": "melancholic acoustic cello ballad", "constraints": ["cello", "acoustic", "melancholic"]},
+  {"id": "h_04", "prompt": "fast 140 BPM synthwave arpeggio", "constraints": ["synthwave", "140", "synth"]},
+  {"id": "h_05", "prompt": "gentle bamboo flute with wind chimes", "constraints": ["flute", "bamboo", "wind chimes"]},
+  {"id": "h_06", "prompt": "heavy distorted electric guitar riffs", "constraints": ["guitar", "distorted", "electric"]},
+  {"id": "h_07", "prompt": "slow 60 BPM ambient piano chords", "constraints": ["piano", "60", "ambient"]},
+  {"id": "h_08", "prompt": "traditional punjabi dhol dance rhythm", "constraints": ["dhol", "punjabi", "rhythm"]},
+  {"id": "h_09", "prompt": "bright ukulele island melody 95 BPM", "constraints": ["ukulele", "95", "island"]},
+  {"id": "h_10", "prompt": "dark cinematic timpani and brass swells", "constraints": ["timpani", "brass", "cinematic"]},
+  {"id": "h_11", "prompt": "relaxing nylon string acoustic guitar", "constraints": ["guitar", "acoustic", "relaxing"]},
+  {"id": "h_12", "prompt": "driving 128 BPM electronic dance drop", "constraints": ["128", "electronic", "dance"]},
+  {"id": "h_13", "prompt": "sad solo violin goodbye melody", "constraints": ["violin", "sad", "melody"]},
+  {"id": "h_14", "prompt": "warm rhodes electric piano lofi groove", "constraints": ["rhodes", "piano", "lofi"]},
+  {"id": "h_15", "prompt": "festive shehnai brass celebration", "constraints": ["shehnai", "celebration", "brass"]},
+  {"id": "h_16", "prompt": "atmospheric synthesizer with tape echo", "constraints": ["synthesizer", "tape", "atmospheric"]},
+  {"id": "h_17", "prompt": "upbeat disco bassline and hi-hats", "constraints": ["disco", "bassline", "upbeat"]},
+  {"id": "h_18", "prompt": "contemplative church pipe organ hymn", "constraints": ["organ", "church", "pipe"]},
+  {"id": "h_19", "prompt": "punchy 80s drum machine pulse 110 BPM", "constraints": ["drum", "80s", "110"]},
+  {"id": "h_20", "prompt": "mystical middle eastern oud solo", "constraints": ["oud", "mystical", "middle eastern"]}
+]

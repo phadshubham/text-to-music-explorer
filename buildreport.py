@@ -15,8 +15,8 @@ from PIL import Image as PILImage
 # ---------------- CONFIG ----------------
 ROLL = "48"
 NAME = "Shubham"
-HF_URL = "[INSERT LIVE HUGGING FACE SPACE URL]"
-GH_URL = "[INSERT PUBLIC GITHUB REPO URL]"
+HF_URL = "https://huggingface.co/spaces/phadshubham/text-to-music-explorer"
+GH_URL = "https://github.com/phadshubham/text-to-music-explorer"
 OUT = f"{ROLL}_{NAME}_P48.pdf"
 HERE = os.path.dirname(os.path.abspath(__file__))
 FIG = os.path.join(HERE, "report", "figures")

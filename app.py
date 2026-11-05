@@ -606,4 +606,5 @@ demo.queue(default_concurrency_limit=1)
 if __name__ == "__main__":
     server_port = int(os.environ.get("PORT", 7860))
     server_name = os.environ.get("GRADIO_SERVER_NAME", "0.0.0.0")
-    demo.launch(server_name=server_name, server_port=server_port, share=False, css=CUSTOM_CSS)
+    share_mode = os.environ.get("SHARE", "false").lower() in ("true", "1") or "--share" in sys.argv
+    demo.launch(server_name=server_name, server_port=server_port, share=share_mode, css=CUSTOM_CSS)
